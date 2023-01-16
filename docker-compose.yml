@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  server:
+    image: "socket-server:latest"
+    networks:
+      - my-shared-network
+    ports:
+      - "9999:8080"
+  client:
+    image: "socket-client:latest"
+    networks:
+      - my-shared-network
+    depends_on:
+      - server
+networks:
+  my-shared-network: {}
